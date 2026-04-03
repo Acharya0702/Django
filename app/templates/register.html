@@ -1,11 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <title>Auth - Register</title>
 </head>
+
 <body>
-    <h1>This is Register page</h1>
+    <div class="container">
+        <h1 class="heading">Register page</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="username" id="username" placeholder="username"><br><br>
+            <input type="text" name="firstname" id="firstname" placeholder="firstname"><br><br>
+            <input type="text" name="lastname" id="lastname" placeholder="lastname"><br><br>
+            <input type="email" name="email" id="email" placeholder="email"><br><br>
+            <input type="password" name="password" id="password" placeholder="password"><br><br>
+            <button type="submit" class="btn">Register</button>
+            <p>{{error}}</p><br>
+            <p>Already have an account
+                <a href="{% url 'login' %}">login here</a>
+            </p>
+        </form>
+    </div>
 </body>
+
 </html>
